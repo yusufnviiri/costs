@@ -25,6 +25,10 @@
          <li >
 <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-default btn-sm" %>
  </li>
+      <li > 
+<h4> name is  <%= current_user.username %>
+</h4> </li>
+
 <% else  %>
        <li > 
         <%= link_to "Log in" ,new_user_session_path   %>
