@@ -1,9 +1,11 @@
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
+  load_and_authorize_resource
   before_action :set_group, only: %i[show edit update destroy]
 
   # GET /groups or /groups.json
   def index
-    @groups = Group.all
+    @groups = Group.includes(:user, :entities).order(created_at: :desc)
   end
 
   # GET /groups/1 or /groups/1.json
@@ -20,15 +22,15 @@ class GroupsController < ApplicationController
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
+    @group.user_id = current_user.id
 
-    respond_to do |format|
-      if @group.save
-        format.html { redirect_to group_url(@group), notice: 'Group was successfully created.' }
-        format.json { render :show, status: :created, location: @group }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @group.errors, status: :unprocessable_entity }
-      end
+    if @group.save
+      flash[:notice] = 'Category was successfully created.'
+
+      redirect_to user_groups_path(@group.user_id)
+    else
+      format.html { render :new, status: :unprocessable_entity }
+      format.json { render json: @group.errors, status: :unprocessable_entity }
     end
   end
 
@@ -64,6 +66,6 @@ class GroupsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def group_params
-    params.require(:group).permit(:name, :icon)
+    params.require(:group).permit(:name, :image, :icon)
   end
 end

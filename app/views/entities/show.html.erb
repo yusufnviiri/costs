@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @entity %>
-
+<div class= "transaction" style="display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+border: 1px solid #eee;
+height: 300px;
+background: #eee;
+width: 50%;
+margin: auto;">
+<span style="font-size: 30px; color: #000; text-transform: capitalize; font-weight: 600; margin-bottom: 20px;"><%= @transaction.name%></span>
+<span style="font-size: 15px; color: gray; text-transform: capitalize; font-weight: 400; margin-bottom: 10px;">DATE: <%= @transaction.created_at.strftime("%e %B %Y") %></span>
+<span style="font-size: 15px; color: gray; text-transform: capitalize; font-weight: 400; margin-bottom: 10px;">TOTAL PAYMENT: K<%= (@transaction.amount) %></span>
+<% if can? :destroy, @transaction %>
 <div>
-  <%= link_to "Edit this entity", edit_entity_path(@entity) %> |
-  <%= link_to "Back to entities", entities_path %>
-
-  <%= button_to "Destroy this entity", @entity, method: :delete %>
+ <%= button_to 'Delete', user_category_transaction_path(id: @transaction.id), method: :delete,  data: {turbo: false}, class: 'btn bg-danger', style: "color: white; margin-bottom: 10px;" %>
+ </div>
+ <% end %>
 </div>

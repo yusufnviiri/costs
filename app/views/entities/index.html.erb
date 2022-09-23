@@ -1,14 +1,48 @@
-<p style="color: green"><%= notice %></p>
 
-<h1>Entities</h1>
+<section class="container-fluid my-4">
+    <div class="row">
+        <div class="col-12 my-1">
+            <%= link_to raw('<i class="fa-solid fa-angle-left fa-2x"></i>'), root_path %>
+            <h1 class="text-primary d-flex justify-content-center">TRANSACTIONS</h1>
+             
+        </div>
+        <div class="col-12">
+            <h3 class="d-flex justify-content-center py-2 px-5">
+            </h3>
+        </div>
+        </div>
+        <div class="col-12 container">
+            <p class="text-primary d-flex justify-content-start">
+                <% if @group.name.present? %>
+                <h3 class="text-primary"><%= @group.name %></h3>
+                <% end %>
+            </p>
+            <h4 class="d-flex justify-content-end " style= "margin-bottom: 15px; color: #434b54;"> Total Amount:
+                <%= Entity.where(group_id: @group.id).reduce(0) { |sum, t| sum + t.amount+0.0}  %></h4>
+         </div>
+  <div class="container ">
+    <% @entity.each do |t|  %>
+        <%= link_to(user_group_entity_path(id: t.id), style: "text-decoration: none;") do %>
 
-<div id="entities">
-  <% @entities.each do |entity| %>
-    <%= render entity %>
-    <p>
-      <%= link_to "Show this entity", entity %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New entity", new_entity_path %>
+            <div class="  budget-item1 my-2 " style=" display: flex; padding: 5px; justify-content: space-between; border: none !important;box-shadow: -12px -6px 21px 8px #eee; height: auto; margin-bottom : 40px;">
+               <div class="my-4 cat-icon col-3 d-flex justify-content-between trans-img-div">
+                 <%= image_tag(@group.icon, style:" width : 120px; height : 120px; text-decoration: none;") %>
+               </div>
+               <div class="d-column col-4 " style="display: flex; align-items : center; flex-direction: column; ">
+                  <h4 class="my-4" style= "text-decoration: none; color: #434b54; text-transform: capitalize;"><%= t.name %></h4>
+                   <p class="my-4" style= "text-decoration: none; color: lightblue;"><%= l t.created_at.to_date, format: :long %></p>
+               </div>
+               <div class="col-3">
+                    <p class="my-4" style= "text-decoration: none; color : yellowgreen; font-weight: 600; font-size: 20px;">K<%= t.amount+0.0 %></p>
+                </div>
+                
+             </div>
+       <% end %>
+    <% end %>
+  </div>
+</section>
+<footer class="footer">
+<%= link_to "Add Transaction", new_user_group_entity_path, class: "add-trans" %>
+<%= link_to "Back", root_path, class: "add-trans", style: "margin-left: 10px; " %>
+</footer>
+           

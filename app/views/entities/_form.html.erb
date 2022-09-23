@@ -1,5 +1,10 @@
-<%= form_with(model: entity) do |form| %>
-  <% if entity.errors.any? %>
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center">
+        <div class="col-12 my-4">
+            <%= link_to raw('<i class="fa-solid fa-angle-left fa-2x"></i>'), root_path %>
+           </div>
+        <div class="col-12 d-flex justify-content-center">
+          <% if entity.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(entity.errors.count, "error") %> prohibited this entity from being saved:</h2>
 
@@ -10,18 +15,20 @@
       </ul>
     </div>
   <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div>
-    <%= form.label :amount, style: "display: block" %>
-    <%= form.number_field :amount %>
-  </div>
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
+            
+        </div>
+        <div class="col-md-6  card p-4 m-5">
+           <%=  form_with model:  entity, url: user_group_entities_path, data: { turbo:false } do |f| %>
+           <%= f.text_field :name, placeholder:'Trnsaction Name', class: 'form-control p-3 my-3'%>
+           <%= f.number_field :amount,  placeholder: 'Amount', min:'0',  class: 'form-control p-3 my-3'%>
+           <div class="form-control p-3 my-3">
+            <%= f.label :category %>
+            <%= f.collection_select :group_id, Group.where(user_id: current_user.id).order(:name),:id,:name %>
+          </div>
+           <div class="d-flex justify-content-end">
+            <%= f.submit "Save", disable_with: 'Submiting...', class:'btn btn-success p-3 d-flex justify-content-end' %>
+           </div>
+           <% end %>
+        </div>
+    </div>
+</div>

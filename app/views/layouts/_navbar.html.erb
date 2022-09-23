@@ -1,0 +1,13 @@
+<nav class="navbar navbar-expand-lg navbar-light " style ="background: #3778c2; height: 80px">
+  <%= link_to 'Budget Calculator', root_path, style: "text-decoration: none; color: #eeee; font-size: 30px; font-weight: 600; padding-left: 20px;" %>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse nav-trans nav-right justify-content-end" id="navbarNav">
+    <ul class="navbar-nav me-auto" style= "flex-direction: row; width: 100%;justify-content: end; padding-right: 120px;">
+      <li class="nav-item">
+      <%= button_to "Logout", destroy_user_session_path, method: :delete, data: {turbo: false}, class: "btn bg-danger text-light"  %>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,14 +1,19 @@
-<p style="color: green"><%= notice %></p>
+<header>
+<h1 class="category-title">Categories</h1>
+</header>
 
-<h1>Groups</h1>
-
-<div id="groups">
+<main>
+ <% if @groups.any? %>
   <% @groups.each do |group| %>
-    <%= render group %>
-    <p>
-      <%= link_to "Show this group", group %>
-    </p>
-  <% end %>
-</div>
+  <%= link_to render(group), user_group_entities_url(current_user, group.id), class: 'category_wrapper'%> 
+<% end %> 
+ <% else %>
+ <p style="margin-top: 50px; text-align:center; color: orange; font-weight:bold;">
+    There is no category added yet!
+  </p>
+<% end %>
+</main>
 
-<%= link_to "New group", new_group_path %>
+<footer class="footer">
+<%= link_to "Add a new category", new_user_group_path(current_user), class: "add-cat" %>
+</footer>
