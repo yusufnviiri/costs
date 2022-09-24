@@ -1,8 +1,10 @@
 # Cost
 # ![](https://img.shields.io/badge/Microverse-blueviolet) Budget-App-rails
 > ** This is a project about how to calculate and save expenditures
+## [Live Version](https://calm-shelf-36387.herokuapp.com/)
 
 
+https://calm-shelf-36387.herokuapp.com/
 
 ## ER Diagram
 <img width="374" alt="erd_diagram" src="https://user-images.githubusercontent.com/98400013/190478182-31f80a0f-be61-44f5-aff4-341e50d898a4.png">
