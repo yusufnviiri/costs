@@ -54,7 +54,7 @@ class EntitiesController < ApplicationController
 
   # DELETE /entities/1 or /entities/1.json
   def destroy
-    @entity= Entity.find(params[:id])
+    @entity = Entity.find(params[:id])
     @entity.destroy
 
     respond_to do |format|
