@@ -7,12 +7,12 @@ height: 300px;
 background: #eee;
 width: 50%;
 margin: auto;">
-<span style="font-size: 30px; color: #000; text-transform: capitalize; font-weight: 600; margin-bottom: 20px;"><%= @transaction.name%></span>
-<span style="font-size: 15px; color: gray; text-transform: capitalize; font-weight: 400; margin-bottom: 10px;">DATE: <%= @transaction.created_at.strftime("%e %B %Y") %></span>
-<span style="font-size: 15px; color: gray; text-transform: capitalize; font-weight: 400; margin-bottom: 10px;">TOTAL PAYMENT: K<%= (@transaction.amount) %></span>
-<% if can? :destroy, @transaction %>
+<span style="font-size: 30px; color: #000; text-transform: capitalize; font-weight: 600; margin-bottom: 20px;"><%= @entity.name%></span>
+<span style="font-size: 15px; color: gray; text-transform: capitalize; font-weight: 400; margin-bottom: 10px;">DATE: <%= @entity.created_at.strftime("%e %B %Y") %></span>
+<span style="font-size: 15px; color: gray; text-transform: capitalize; font-weight: 400; margin-bottom: 10px;">TOTAL: $<%= (@entity.amount) %></span>
+<% if can? :destroy, @entity %>
 <div>
- <%= button_to 'Delete', user_category_transaction_path(id: @transaction.id), method: :delete,  data: {turbo: false}, class: 'btn bg-danger', style: "color: white; margin-bottom: 10px;" %>
+ <%= button_to 'Delete', user_group_entity_path(id: @entity.id), method: :delete,  data: {turbo: false}, class: 'btn bg-danger', style: "color: white; margin-bottom: 10px;" %>
  </div>
  <% end %>
 </div>
