@@ -22,7 +22,7 @@ RSpec.describe 'Group page', type: :feature do
   it 'should be able to save category' do
     click_link 'Add a new category'
     fill_in 'Name', with: 'Cat 1'
-    page.attach_file('group_image', "#{Rails.root}app/assets/images/user.png")
+    page.attach_file('group_image', 'app/assets/images/user.png')
     click_button 'Save'
     expect(page).to have_content('Cat 1')
   end
