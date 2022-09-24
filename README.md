@@ -4,8 +4,10 @@
 ## [Live Version](https://calm-shelf-36387.herokuapp.com/)
 ## [Demo Video](https://www.loom.com/share/4e464c7a0241492abb16bfba12267ec7)
 
+## [Demo Video](https://www.loom.com/share/0b21bc6f932b47b7874ed5b958bdd4c7)
 
-https://calm-shelf-36387.herokuapp.com/
+
+## [Live Version](https://calm-shelf-36387.herokuapp.com/)
 
 ## ER Diagram
 <img width="374" alt="erd_diagram" src="https://user-images.githubusercontent.com/98400013/190478182-31f80a0f-be61-44f5-aff4-341e50d898a4.png">
