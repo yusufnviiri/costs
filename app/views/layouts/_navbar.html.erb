@@ -1,0 +1,32 @@
+
+
+
+
+<nav class="navbar navbar-expand-lg navbar-light " style ="background: #3778c2; height: auto">
+  <div class="container-fluid">
+  <%= link_to 'My costs', root_path, style: "text-decoration: none; color: #deef; font-size: 30px; font-weight: 600; padding-left: 20px;height:auto" %>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav me-auto" style= "flex-direction: row; width: 100%;justify-content: end; padding-right: 120px;">
+     
+             <% if user_signed_in? %>
+         <li >
+         <li style="color: white; font-size: 20px; font-weight: 100;">
+         <%= current_user.username   %> 
+         <%= button_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-default btn-sm" ,style: "color: red; font-size: 20px; font-weight: 100;" %>
+
+         </li>
+ </li>
+<% else  %>
+       <li > 
+        <%= link_to "Log in" ,root_path , class: "btn btn-default btn-sm" ,style: "color: blue; font-size: 20px; font-weight: 100;" %>
+ </li>
+
+
+<% end %>
+      </ul>
+    </div>
+  </div>
+</nav>

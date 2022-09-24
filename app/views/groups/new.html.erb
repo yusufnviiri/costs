@@ -1,0 +1,25 @@
+<%= form_with model: @group, :html => { :style => "width: 76%; margin: auto; gap: 10px;  border: 1px solid #eee;" }, url: user_groups_path,local: true, data: {turbo:false}  do |form| %>
+ 
+  <div style= "margin-bottom: 20px;    margin-bottom: 20px; display: flex; flex-direction: column;">
+ <div>
+  <%= image_tag('user.png', style:'width: 200px; height: 200px; margin: auto;') %>
+    <%= form.file_field :image %>
+  </div> 
+  <div>
+    <%= form.text_field :name, class: "form-control w-50", placeholder: "Name" , style: ' padding: 10px; margin: auto;' %>
+  </div>
+    <div class="text-center m-3">
+      <%= form.submit "Save", class: "btn btn-primary" %>
+    </div>
+    <% if @group.errors.any? %>
+      <div style="color: red">
+        <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+  
+        <ul>
+          <% @group.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <% end %>

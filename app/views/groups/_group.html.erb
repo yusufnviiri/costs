@@ -1,0 +1,19 @@
+<div>
+<section class= "category_card">
+
+<div class="category-data">
+<div class="iimg-icon">
+<%= image_tag group.image, skip_pipeline: true, class:'icon'%>
+</div>
+<div class="name-date">
+<h2 class= "category_name"> <%= group.name %></h2>
+ <span class="bottom_data">
+      <time data="<%= group.created_at %>" class="date"> DATE: <%= group.created_at.strftime("%e %B %Y") %></time>
+ </span>
+ </div>
+<span class= "category_total"><%= number_to_currency(group.total_amount)%></span>
+</div>
+</section> 
+</div> 
+
+
