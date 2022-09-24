@@ -54,10 +54,11 @@ class EntitiesController < ApplicationController
 
   # DELETE /entities/1 or /entities/1.json
   def destroy
+    @entity= Entity.find(params[:id])
     @entity.destroy
 
     respond_to do |format|
-      format.html { redirect_to entities_url, notice: 'Entity was successfully destroyed.' }
+      format.html { redirect_to user_group_entities_path, notice: 'Entity was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
