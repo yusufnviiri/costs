@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Group page', type: :feature do
   before :each do
-    @user1 = User.new(name: 'Daniel', email: 'Daniel@gmail.com', password: '1234567', password_confirmation: '1234567')
+    @user1 = User.new(name: 'Andy', email: 'andy@gmail.com', password: 'password', password_confirmation: 'password')
     @user1.save
     visit new_user_session_path
     fill_in 'login', with: @user1.email

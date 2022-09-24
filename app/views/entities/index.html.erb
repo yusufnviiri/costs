@@ -17,8 +17,8 @@
                 <h3 class="text-primary"><%= @group.name %></h3>
                 <% end %>
             </p>
-            <h4 class="d-flex justify-content-end " style= "margin-bottom: 15px; color: #434b54;"> Total Amount:
-                <%= Entity.where(group_id: @group.id).reduce(0) { |sum, t| sum + t.amount+0.0}  %></h4>
+            <h4 class="d-flex justify-content-end " style= "margin-bottom: 15px; color: #434b54;"> Total Amount: 
+                $<%= Entity.where(group_id: @group.id).reduce(0) { |sum, t| sum + t.amount+0.0}  %></h4>
          </div>
   <div class="container ">
     <% @entity.each do |t|  %>
@@ -33,7 +33,7 @@
                    <p class="my-4" style= "text-decoration: none; color: lightblue;"><%= l t.created_at.to_date, format: :long %></p>
                </div>
                <div class="col-3">
-                    <p class="my-4" style= "text-decoration: none; color : yellowgreen; font-weight: 600; font-size: 20px;">K<%= t.amount+0.0 %></p>
+                    <p class="my-4" style= "text-decoration: none; color : yellowgreen; font-weight: 600; font-size: 20px;">$<%= t.amount+0.00 %></p>
                 </div>
                 
              </div>

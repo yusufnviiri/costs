@@ -15,7 +15,7 @@
         </div>
         <div class="col-md-6  card p-4 m-5">
            <%=  form_with model:  @entity, url: user_group_entities_path, data: { turbo:false } do |f| %>
-           <%= f.text_field :name, placeholder:'Trnsaction Name', class: 'form-control p-3 my-3'%>
+           <%= f.text_field :name, placeholder:'Transaction', class: 'form-control p-3 my-3'%>
            <%= f.number_field :amount,  placeholder: 'Amount', min:'0',  class: 'form-control p-3 my-3'%>
            <div class="form-control p-3 my-3">
             <%= f.label :category %>

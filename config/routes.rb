@@ -6,7 +6,7 @@ Rails.application.routes.draw do
     # Redirests signing out users back to sign-in
     get "users", to: "devise/sessions#new"
   end
- 
+  # Defines the root path route ("/")
   unauthenticated :user do
     root to: 'splashs#index'
   end
